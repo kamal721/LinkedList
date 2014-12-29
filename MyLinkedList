@@ -1,0 +1,84 @@
+public class MyLinkedList <E>
+{
+	private Element<E> head;
+	private Element<E> tail;
+	private int size;
+	
+	public MyLinkedList()
+	{
+		head = null;
+		tail = null;
+		size = 0;
+	}
+	
+	public void add(Element<E> e)
+	{
+		if (head == null && tail == null)
+		{
+			this.head = e;
+			this.tail = e;
+		}
+		else
+		{
+			tail.setNext(e);
+			this.tail = e;
+		}
+		size++;
+	}
+	
+	public void remove(Integer position)
+	{
+		if (head != null && tail != null)
+		{
+			if(position == 0)
+			{
+				this.head = head.getNext();
+			}
+			else
+			{
+				Element<E> prevToRemove = head;
+				for (int i=1; i<position; i++)
+				{
+					prevToRemove = prevToRemove.getNext();
+				}
+				if (position == size-1)
+				{
+					this.tail = prevToRemove;
+				}
+				else
+				{
+					prevToRemove.setNext(prevToRemove.getNext().getNext());
+				}
+			}
+			size--;
+		}
+	}
+	
+	public E getMiddle() throws NullPointerException
+	{
+		Element<E> middle = head;
+		int mid = (size/2);
+		for (int i = 0; i < mid; i++)
+		{
+			middle = middle.getNext();
+		}
+		return middle.getValue();
+	}
+	
+	@Override
+	public String toString()
+	{
+		String string = new String();
+		Element<E> element = head;
+		for (int i = 0; i < size; i++)
+		{
+			string = string.concat(element.getValue().toString());
+			if(i!=size-1)
+			{
+				string = string.concat(", ");
+			}
+			element = element.getNext();
+		}
+		return string;
+	}
+}
