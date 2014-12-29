@@ -1,0 +1,22 @@
+public class LinkedListMain
+{
+	public static void main(String args[])
+	{
+		MyLinkedList<Integer> list = new MyLinkedList<Integer>();
+		list.add(new Element<Integer>(1));
+		list.add(new Element<Integer>(5));
+		list.add(new Element<Integer>(7));
+		list.add(new Element<Integer>(44));
+		list.add(new Element<Integer>(4));
+		System.out.println(list.toString());
+		list.remove(0);
+		System.out.println(list.toString());
+		list.remove(0);
+		System.out.println(list.toString());
+		list.remove(0);
+		System.out.println(list.toString());
+		list.remove(0);
+		System.out.println(list.toString());
+		System.out.println("Middle Element of the list: " + list.getMiddle());
+	}
+}
